@@ -1,0 +1,113 @@
+@import "../../../../../scss/variables";
+
+spacing-panel {
+  display: block;
+
+  .side-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+
+    > .side-control {
+      width: 25px;
+      height: 25px;
+      border: 1px solid $site-border-color-200;
+      background-color: $site-bg-color-200;
+      margin-right: 5px;
+      position: relative;
+
+      &.all-control {
+        border-color: $site-border-color-200;
+        margin-right: auto;
+
+        &.active {
+          border-color: $site-border-color-100;
+        }
+      }
+
+      &.top-control {
+        border-top-color: $site-border-color-200;
+
+        &.active {
+          border-top-color: $site-border-color-100;
+        }
+      }
+
+      &.right-control {
+        border-right-color: $site-border-color-200;
+
+        &.active {
+          border-right-color: $site-border-color-100;
+        }
+      }
+
+      &.bottom-control {
+        border-bottom-color: $site-border-color-200;
+
+        &.active {
+          border-bottom-color: $site-border-color-100;
+        }
+      }
+
+      &.left-control {
+        border-left-color: $site-border-color-200;
+
+        &.active {
+          border-left-color: $site-border-color-100;
+        }
+      }
+    }
+  }
+  
+  .side-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 115px;
+
+    input {
+      border: 2px solid $site-border-color-200;
+      background-color: $site-bg-color-100;
+      height: 100%;
+      text-align: center;
+    }
+
+    > .all-input {
+      flex: 0 0 49%;
+      width: 49%;
+    }
+
+    > .side-inputs-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 0 0 49%;
+      width: 49%;
+
+      &.borderRadius {
+        > .input-container {
+          width: 48%;
+          height: 55px;
+        }
+
+        > .right-input, > .left-input {
+          margin: 0 0 5px;
+        }
+
+      }
+
+      > .input-container {
+        height: 36px;
+      }
+
+      > .right-input, > .left-input {
+        width: 49%;
+        margin: 3px 0 3px;
+      }
+    }
+  }
+
+  .mat-slider {
+    width: 100%;
+  }
+}

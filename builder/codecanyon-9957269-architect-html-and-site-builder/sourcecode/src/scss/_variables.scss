@@ -1,0 +1,10 @@
+@import "../common/scss/variables";
+
+$site-accent-color: map_get($mat-teal, 500);
+
+//inspector
+$inspector-width: 380px;
+
+//hover boxes
+$hover-box-bg-color: #88ceff;
+$hover-box-actions-color: #fff;

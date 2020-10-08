@@ -1,0 +1,81 @@
+<div class="page-header">
+    <material-navbar menuPosition="dashboard" [container]="true"></material-navbar>
+
+    <div class="header-body container">
+        <form class="inputs" [formGroup]="models">
+            <div class="input-container">
+                <label for="search-query" trans>Search</label>
+                <input type="text" formControlName="query" id="search-query">
+            </div>
+
+            <div class="input-container">
+                <label for="project-status" trans>Status</label>
+                <select formControlName="published" id="project-status">
+                    <option value="all" trans>All</option>
+                    <option [ngValue]="1" trans>Published</option>
+                    <option [ngValue]="0" trans>Unpublished</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label for="project-order" trans>Sort</label>
+                <select formControlName="order" id="project-order">
+                    <option value="created_at|desc" trans>Newest</option>
+                    <option value="created_at|asc" trans>Oldest</option>
+                    <option value="name|desc" trans>A-Z</option>
+                    <option value="name|asc" trans>Z-A</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="actions">
+            <ng-container *ngIf="settings.get('billing.enable')">
+                <a class="upgrade-button" mat-raised-button color="accent" routerLink="/billing/subscription" *ngIf="currentUser.isSubscribed()">
+                    <mat-icon svgIcon="flash-on"></mat-icon>
+                    <span trans>Manage Subscription</span>
+                </a>
+                <a class="upgrade-button" mat-raised-button color="accent" routerLink="/billing/upgrade" *ngIf="!currentUser.isSubscribed()">
+                    <mat-icon svgIcon="flash-on"></mat-icon>
+                    <span trans>Upgrade to Premium</span>
+                </a>
+            </ng-container>
+            <a class="new-project-button" mat-raised-button color="accent" routerLink="/dashboard/projects/new" trans>New Project</a>
+        </div>
+    </div>
+</div>
+
+<section>
+    <ad-host slot="ads.dashboard_top" class="ad-host-top"></ad-host>
+
+    <div class="projects container template-grid">
+        <div class="project template-grid-item" *ngFor="let project of projects">
+            <div class="header">
+                <a [href]="getProjectUrl(project)" target="_blank" trans>View Site</a>
+            </div>
+            <img [src]="getProjectImage(project)" (click)="openBuilder(project)">
+            <div class="footer">
+                <div class="title">
+                    <div class="name">{{project.name}}</div>
+                    <div class="updated">{{project.created_at | formattedDate}}</div>
+                </div>
+                <div class="actions">
+                    <button mat-icon-button color="primary" (click)="openBuilder(project)" [matTooltip]="'Open in builder' | trans"><mat-icon svgIcon="brush"></mat-icon></button>
+                    <button mat-icon-button color="primary" [disabled]="!currentUser.hasPermission('projects.publish')" (click)="openPublishProjectModal(project)" [matTooltip]="'Publish' | trans">
+                        <mat-icon svgIcon="publish"></mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="deleteProjectWithConfirmation(project)" [matTooltip]="'Delete' | trans"><mat-icon svgIcon="delete"></mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <no-results-message *ngIf="!projects.length">
+        <span primary-text *ngIf="models.controls.query.value" trans>Not matching projects found.</span>
+        <span primary-text *ngIf="!models.controls.query.value" trans>You have not created any projects yet.</span>
+        <span secondary-text *ngIf="!models.controls.query.value" trans>Nothing to show. <a routerLink="/dashboard/projects/new" trans>Create a project?</a></span>
+    </no-results-message>
+
+    <ad-host slot="ads.dashboard_bottom" class="ad-host-bottom"></ad-host>
+</section>
+
+<loading-indicator [isVisible]="loading" class="overlay"></loading-indicator>

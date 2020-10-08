@@ -1,0 +1,42 @@
+<div class="header">
+    <div class="title" trans>Site Builder</div>
+    <div class="subtitle" trans>Configure the site builder and user dashboard settings.</div>
+</div>
+
+<form class="body many-inputs" (submit)="saveSettings()" ngNativeValidate>
+    <div class="input-container">
+        <label for="builder.routing_type" trans>User Site Url Type</label>
+        <select name="builder.routing_type" id="builder.routing_type" [(ngModel)]="state.client['builder.routing_type']">
+            <option value="none" trans>None</option>
+            <option value="subdomain" trans>Subdomain</option>
+            <option value="regular" trans>Regular</option>
+        </select>
+        <p>
+            <span trans>Via what url user created sites should be accessible. </span>
+            <span *ngIf="state.client['builder.routing_type'] === 'none'" trans>None: User sites will not be accessible at all.</span>
+            <span *ngIf="state.client['builder.routing_type'] === 'subdomain'" trans>Subdomain: https://project-name.your-site.com</span>
+            <span *ngIf="state.client['builder.routing_type'] === 'regular'" trans>Regular: https://your-site.com/sites/project-name</span>
+        </p>
+    </div>
+
+    <div class="input-container">
+        <label for="builder.google_fonts_api_key" trans>Google Fonts API Key</label>
+        <input name="builder.google_fonts_api_key" id="builder.google_fonts_api_key" type="text" [(ngModel)]="state.client['builder.google_fonts_api_key']">
+    </div>
+
+    <div class="input-container">
+        <label for="template_categories" trans>Template Categories</label>
+        <chip-input
+                id="template_categories"
+                name="template_categories"
+                [(ngModel)]="categories"
+                placeholder="+New Category..."
+                trans-placeholder
+        ></chip-input>
+    </div>
+
+    <button mat-raised-button color="accent" class="button primary update-button" type="submit" [disabled]="loading" trans>Update</button>
+    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>
+</form>
+
+<loading-indicator [isVisible]="loading" class="overlay"></loading-indicator>

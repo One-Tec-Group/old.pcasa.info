@@ -1,0 +1,55 @@
+@import "../../../../../scss/variables";
+
+themes-panel {
+  display: block;
+  background-color: $site-bg-color-200;
+  height: 100%;
+  width: 300px;
+  box-sizing: inherit;
+
+  .remove-button {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .themes {
+    padding: 15px;
+
+    .theme {
+      margin-bottom: 20px;
+      cursor: pointer;
+      background-color: $site-bg-color-100;
+      border: 2px solid transparent;
+      @include mat-elevation-transition;
+      @include mat-elevation(2);
+      border-radius: 4px;
+      overflow: hidden;
+
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.7;
+      }
+
+      &.active {
+        border-color: $site-primary-color-200;
+      }
+
+      &:hover {
+        @include mat-elevation(8);
+      }
+
+      .name {
+        padding: 10px 0;
+        text-align: center;
+        text-transform: capitalize;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

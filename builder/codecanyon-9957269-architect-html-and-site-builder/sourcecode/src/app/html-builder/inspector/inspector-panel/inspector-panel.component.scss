@@ -1,0 +1,40 @@
+@import "../../../../scss/variables";
+
+inspector-panel {
+  display: block;
+  overflow: auto;
+
+  .breadcrumbs {
+    background-color: $site-bg-color-200;
+    border: 1px solid $site-border-color-200;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+
+    .crumb-container {
+      &:hover:not(.last) .crumb {
+        text-decoration: underline;
+      }
+
+      &.last .crumb {
+        color: $site-primary-color-200;
+        pointer-events: none;
+      }
+    }
+
+    mat-icon {
+      vertical-align: sub;
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .edit-layout-button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .mat-expansion-panel .mat-expansion-panel-body {
+    margin: 15px;
+  }
+}

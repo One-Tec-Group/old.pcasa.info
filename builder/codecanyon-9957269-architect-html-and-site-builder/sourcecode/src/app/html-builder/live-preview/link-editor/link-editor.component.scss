@@ -1,0 +1,31 @@
+@import "../../../../scss/variables";
+
+link-editor {
+  display: block;
+  background-color: $site-bg-color-100;
+  box-shadow: $box-shadow-4;
+  width: 648px;
+  overflow: hidden;
+
+  .mat-tab-body-content {
+    padding: 15px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+
+  .page-list-item {
+    cursor: pointer;
+
+    &:hover {
+      background-color: $site-bg-color-200;
+    }
+
+    &.selected {
+      background-color: $site-bg-color-300;
+    }
+  }
+}

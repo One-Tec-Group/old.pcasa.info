@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+	<title>Architect - Website and Html builder</title>
+ 	<meta name="description" content="Thank you for purchasing MTDb! This app is built on top of laravel framework which means it is 100% OOP oriented, follows MVC pattern and best coding practises. Great, why do I care you ask? Well, because of all the above, besides this documentation you have a massive amount of online documentation for laravel which you almost always can apply to this app. So if you want to do some advanced modification/extension to MTDb, or just want to understand better how it works under the hood, take a look at Laravel Docs, Laracasts, or just google for dozens of other tutorial/help sites on laravel.">
+	<meta name="author" content="r4mark">
+	<meta name="copyright" content="r4mark">
+	<meta name="date" content="2013-12-26T00:00:00+01:00">
+	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/bootstrap.min.js" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    </head>
+
+    <body>
+        <div id="docs-row" class="clearfix">
+            <h1 class="col-sm-4">Documentation</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <ul class="col-sm-3 sidebar list-unstyled">
+                    <li class="header"><i class="fa fa-gears"></i><span>Installation</span></li>
+                    <li class="active"><a href="#create-db">Create a new database</a></li>
+                    <li><a href="#upload-files">Upload the files</a></li>
+                    <li><a href="#install">Install Architect</a></li>
+                    <li><a href="#update">Updating to new versions</a></li>
+
+                    <li class="header"><i class="fa fa-tachometer"></i>Builder</li>
+                    <li><a href="#elements">Elements</a></li>   
+                    <li><a href="#keybinds">Keybinds</a></li>
+
+                    <li class="header" data-target="#social-list"><i class="fa fa-users"></i>Social Login</li>
+                    <li><a href="#social-overview">Overview</a></li>
+                    <li><a href="#social-facebook">Facebook</a></li>
+                    <li><a href="#social-twitter">Twitter</a></li>
+                    <li><a href="#social-google">Google</a></li>
+
+                    <li class="header"><i class="fa fa-envelope"></i>Mail</li>
+                    <li><a href="#mail-outgoing">Outgoing Mail</a></li>
+
+                    <li class="header"><i class="fa fa-lock"></i>Admin</li>
+                    <li><a href="#admin-analytics">Analytics</a></li>
+                    <li><a href="#translations">Translations</a></li>
+                 </li>    
+        
+                    <li class='header'><i class="fa fa-life-ring"></i>Support</li>
+                    <li><a href="#support">Send a support request</a></li>
+                 </ul>
+
+                <div class="col-sm-9" id="docs-content">
+                    <section id="create-db">
+                        <h2>Creating a new database</h2>
+                        <p>First thing you want to do before installing <strong>Architect</strong> is to create a new database on your mysql server. If you already know how to do this/or have already created one just skip to the <a href="#upload-files">next step</a>.</p>
+                        <p>Your host will most likely be running <strong>phpMyAdmin</strong> as mysql manager, if that's the case here's a step by step guide (if not the proccess will be very similar on other managers).</p>
+                        <p>Login to your control panel, find and click phpMyAdmin link: <img src="assets/images/db_ex_2.png"> Click on the database tab in the top menu, enter any name you like and click create.<img src="assets/images/db_ex_3.png"></p>
+                    </section>
+
+                    <section id="upload-files">
+                        <h2>Uploading Files</h2>
+                        <p>After creating a database, unzpip the .zip file you donwloaded from CodeCanyon and upload the <strong>contents</strong> of <strong>architect/server</strong> folder to your server's root folder (usually called www or html or something similar) or a sub-directory.</p>
+
+                        <p>Shared hosting providers usually have a web based file manager, but you should use something like <a href="https://filezilla-project.org/">Filezilla</a> to do the upload as the web based managers can cause various problems fairly often.</p>
+
+                        <p>Make sure that <strong>storage</strong> and all the <strong>sub-folders</strong> are writable by your server (have 777 permissions if you are on shared hosting). You can change files and folders permissions by right-clicking them in the filemanager, clicking file permissions, and then entering 777 in the permissions field.</p>
+
+                        <p>Optional. Point your domain or sub-domain to "public" folder inside architect directory instead of architect directory itself. While this is optional, you should do it if possible to increase security and potentially avoid issues on some servers.</p>
+
+                        <img src="assets/images/install_ex_2.png">
+                    </section>
+
+                    <section id="install">
+                        <h2>Installing Architect</h2>
+                        <p>After you uploaded Architect files, simply open up your site url and follow on-screen instructions to finish the installation.</p>
+                        <img src="assets/images/install_ex_1.png">
+                    </section>
+
+                    <section id="update">
+                        <h2>Updating from version <strong>1.8.2</strong> or earlier:</h2>
+
+                        <p>With version 2.0 architect has been fully re-written, essentially it's now a different application to prior versions.
+                            This means that updating from versions prior to 2.0 is a bit more difficult.
+                        </p>
+                        
+                        <p>If you don't need to keep data from older versions (users, projects, custom templates etc), easiest way would be to remove old version completely and install fresh copy of 2.0</p>
+
+                        <p>If you do want to migrate data from older versions, please follow the steps below:
+                        (If you don't want to loose production time, we'd recommend making a duplicate of your current site and updating that, instead of updating a live site directly.)</p>
+
+                        <ol>
+                            <li>Make sure you have at least PHP 5.6 on your server.</li>
+                            <li><strong>Backup current architect database via phpMyAdmin or similar tool.</strong></li>
+                            <li><strong>Backup current architect files.</strong></li>
+                            <li>Delete all files and folders inside old architect directory on your server.</li>
+                            <li>Extract the .zip file you downloaded from CodeCanyon.</li>
+                            <li>Upload the <strong>contents&nbsp;</strong>of "architect/server" folder to the old Architect folder on your server.</li>
+                            <li>Copy <strong>assets/images/uploads</strong> folder from old architect directory you have backed up, into <strong>public</strong> folder.</li>
+                            <li>Rename <strong>.env.example</strong> file inside architect directory on your server to <strong>.env</strong></li>
+                            <li>Enter your database details and site url inside <strong>.env</strong> file.</li>
+                            <li>if your database credentials contain stapces, surround them with double quotes. For example <strong>DATABASE_NAME="name with spaces"</strong></li>
+                            <li>Visit http://yoursite.com/secure/update url and click <strong>Update Now</strong> button. (make sure you are logged in as admin)</li>
+                        </ol>
+
+                        <img src="assets/images/update_ex_1.png">
+                        <img src="assets/images/update_ex_2.png">
+                        
+
+                        <h2>Updating from version <strong>2.0.0</strong> or newer:</h2>
+
+                        <ol>
+                            <li>Extract the .zip file you downloaded from CodeCanyon.</li>
+                            <li>Upload the <strong>contents&nbsp;</strong>of "architect/server" folder to the main Architect folder on your server.</li>
+                            <li>Visit http://yoursite.com/secure/update url and click <strong>Update Now</strong> button. (make sure you are logged in as admin)</li>
+                        </ol>
+
+                        <br>
+                        <br>
+                        <p><strong>client</strong> folder inside the .zip can be ignored, unless you plan to modify Architect code.</p>
+                    </section>
+
+                    <section id="elements" class="new-section">
+                        <h2>Elements</h2>
+                        
+                        <h3><span class="mark">#</span>Introduction</h3>
+                        <p>You can see all the elements that come with Architect by default on the left sidebar (elements panel), they can be basic ones like button or link or they can be a lot more complex and combine html markup, css styling and javascript behaviour into one element.</p>
+                        
+                        <h3><span class="mark">#</span>Drag and Drop</h3>
+                        <p>You can drag and drop elements from the elements panel into the builder. Note that you might not be able to drop them anywhere you like, because architect follows official HTML5 specification for what elements accept what elements as children, for example an unordered list element (ul) will only accept list item (li) as a child, so you will only be able to drag and drop list items inside unordered list.</p>
+                        
+                        <h3><span class="mark">#</span>Creating new elements</h3>
+                        <p>You can create your own elements, to accompany the default ones.</p>
+
+                        <p>First create a new file inside <strong>public/storage/elements</strong> folder, you should name it after your element, for example, if you want to name your element <strong>My awesome element</strong>, the file name should be:</p>
+                        <pre>myAwesomeElement.html</pre>
+
+                        <p>Inside the file, describe your new element. You can do this in 3 parts:
+
+                        <ol>
+                            <li>Add any css you need for your element inside <code>&ltstyle&gt;&lt/style&gt;</code> tags at the top of the file. You should add <code>&ltstyle&gt&lt/style&gt</code> tags even if your element doesn't require any custom css.</p></li>
+                            <li>Add your element html markup after the style tag.</li>
+                            <li>And finally add your element configuration after html markup, inside <code>&ltscript&gt;&lt/script&gt;</code> tags.</li>
+                        </ol>
+
+                        <table class="table">
+                            <caption>Available configuration options.</caption>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>String</td>
+                                    <td>Generic</td>
+                                    <td>Name of your element. Uppercase and spaces allowed.</td>
+                                </tr>
+                                <tr>
+                                    <td>Nodes</td>
+                                    <td>Array|String</td>
+                                    <td>undefined</td>
+                                    <td>Either an array of nodes your element is matched by or '*', meaning all nodes (your element will be matched by class).</td>
+                                </tr>
+                                <tr>
+                                    <td>Frameworks</td>
+                                    <td>Array</td>
+                                    <td>undefined</td>
+                                    <td>This doesn't do much at the moment, but will be used in the future when architect supported mupltiple frameworks.</td>
+                                </tr>
+                                <tr>
+                                    <td>Class</td>
+                                    <td>String</td>
+                                    <td>undefined</td>
+                                    <td>A class your element will be matched by, can be empty if you specified a node instead.</td>
+                                </tr>
+                                <tr>
+                                    <td>Types</td>
+                                    <td>Array</td>
+                                    <td>['flow']</td>
+                                    <td>An array of element types (html categories), you can find them <a href="http://www.w3.org/TR/html5/index.html#elements-1">here</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td>validChildren</td>
+                                    <td>Array|false</td>
+                                    <td>['flow']</td>
+                                    <td>An array of types (html categories) that your element accepts as children. you can the categories <a href="http://www.w3.org/TR/html5/index.html#elements-1">here</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td>Category</td>
+                                    <td>String</td>
+                                    <td>undefined</td>
+                                    <td>What category in elements panel your element should appear under (typography, forms, components etc).</td>
+                                </tr>
+                                <tr>
+                                    <td>previewScale</td>
+                                    <td>String</td>
+                                    <td>1</td>
+                                    <td>You can specify the ratio you want to shrink your element on in the preview in elements panel if it doesn't fit otherwise.</td>
+                                </tr>
+                                <tr>
+                                    <td>showWysiwyg</td>
+                                    <td>Boolean</td>
+                                    <td>true</td>
+                                    <td>Whether or not a text editor should be show when your element is double clicked.</td>
+                                </tr>
+                                <tr>
+                                    <td>hiddenClasses</td>
+                                    <td>Array</td>
+                                    <td>undefined</td>
+                                    <td>Array of classes you want to be hidden in the inspector class editor.</td>
+                                </tr>
+                                <tr>
+                                    <td>canDrag</td>
+                                    <td>Boolean</td>
+                                    <td>true</td>
+                                    <td>Whether or not the element should be draggable in the builder.</td>
+                                </tr>
+                                <tr>
+                                    <td>canModify</td>
+                                    <td>Array</td>
+                                    <td>all</td>
+                                    <td>An array of styles that should be modifiable from the inspector (padding, margin, borders etc)</td>
+                                </tr>
+                                <tr>
+                                    <td>Attributes</td>
+                                    <td>Object</td>
+                                    <td>Undefined</td>
+                                    <td><p>This is where you can specific javascript config behaviour for your element in the inspector. The object should contain keyd objects where name is selects or input fields name and value is a config object. You can look at some examples in <strong>client\src\app\html-builder\elements\definitions\bootstrap.js or base.js</strong> Here is an example for text input element that allows to change placeholder attribute value:</p> 
+                                        <pre>placeholder: {
+    list: [
+        {name: 'Text', value: 'text'},
+        {name: 'Password', value: 'password'},
+    ],
+    text: true,
+    value: 'Text input',
+    onAssign: function($scope) {
+        this.value = $scope.selected.node.getAttribute('placeholder');
+    },
+    onChange: function($scope, text) {
+        $scope.selected.node.setAttribute('placeholder', text);
+        $scope.repositionBox('select');
+    }
+},
+                                        </pre>
+                                    <p><strong>list:</strong> An array of objects that represent select options, where <strong>value</strong> is option value and <strong>name</strong> is option name.</p>
+                                    <p><strong>text:</strong> specifies whether it should be an input field or a select. If this is false your should specify a list instead.</p>
+                                    <p><strong>value:</strong> default value for select or input field.</p>
+                                    <p><strong>onAssign:</strong> Callback for then this config field is innitiated (when your element is selected in the builder), good place to set a default value as seen above.</p>
+                                    <p><strong>onChange:</strong> Callback for then this config value is changed, you get passed <strong>$scope</strong> on which you can access the selected node in the builder and the new value as a second parameter.</p>
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
+                    </section>
+                
+    
+                    <section id="keybinds">
+                        <h2><span class="mark">#</span>Keybinds</h2>
+
+                        <p>If keybinds are not working you might need to click anywhere inside the builder to focus the main window.</p>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Keybind</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><kbd>&#8593;</kbd></td>
+                                    <td>Move selected element up in builder</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>&#8595;</kbd></td>
+                                    <td>Move selected element down in builder</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Del</kbd></td>
+                                    <td>Delete selected element from builder</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl + C</kbd></td>
+                                    <td>Copy selected element</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl + V</kbd></td>
+                                    <td>Paste selected element</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl + X</kbd></td>
+                                    <td>Cut selected element</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section id="social-overview" class="new-section">
+                        <h2>Social Login</h2>
+
+                        <p>In order for social logins to work properly, you will need to register for an application on their respective sites and enter the credentials you receive into <strong>admin area > settings > authentication</strong> page.</p>
+                        <img src="assets/images/social_login_ex1.png">
+                    </section>
+
+                    <section id="social-facebook">
+                        <h2>Facebook</h2>
+
+                        <ol>
+                            <li>Register for regular facebook account, if you don't already have one.</li>
+                            <li>Open <a href="https://developers.facebook.com" target="_blank" rel="noopener noreferrer">this url</a>, <strong>click my apps</strong> in the top navigation bar, then <strong>Add a New App</strong></li>
+                            <li>Enter any display name, your email address and click <strong>Create App ID</strong></li>
+                            <li>Click<strong> Add Product</strong> in the left sidebar, then <strong>Facebook Login</strong>, select <strong>Web</strong>, enter your site url. You can ignore the rest of the panels in quickstart wizard.</li>
+                            <li>Click <strong>Facebook Login &gt; Settings </strong>and enter <strong>http://your-site-url.com/secure/auth/social/facebook/callback </strong>into <strong>Valid OAuth redirect URIs</strong> field.</li>
+                            <li>Click<strong> Dashboard</strong> in left sidebar and copy/paste <strong>APP ID</strong> and <strong>APP</strong> <strong>SECRET</strong> into settings page.</li>
+                        </ol>
+                        <p><img src="assets/images/social_login_facebook_ex1.png"></p>
+                    </section>
+
+                    <section id="social-twitter">
+                        <h2>Twitter</h2>
+
+                        <ol>
+                            <li>Register for regular twitter account, if you don't already have one.</li>
+                            <li>Open <a href="https://apps.twitter.com" target="_blank" rel="noopener noreferrer">this url</a>, click <strong>Create New App, </strong>enter anything into name and description fields, enter your site url into <strong>Website</strong> and <strong>Callback URL</strong> fields and create the app.</li>
+                            <li>Copy <strong>Consumer Key</strong> and<strong> Consumer Secret </strong>from "Keys and Access Tokens" tab into settings page.</li>
+                        </ol>
+                        <p><img src="assets/images/social_login_twitter_ex1.png"></p>
+                    </section>
+
+                    <section id="social-google">
+                        <h2>Google</h2>
+
+                        <ol>
+                            <li>Register for regular google account, if you don't already have one.</li>
+                            <li>Open <a href="https://console.developers.google.com" target="_blank" rel="noopener noreferrer">this url</a>, create a new project, click <strong>Credentials</strong> in left sidebar,  select <strong>Oauth Client ID</strong> -&gt; <strong>Web Application.</strong></li>
+                            <li>Enter <strong>http://your-site-url.com/secure/auth/social/google/callback</strong> into <strong>Authorized Redirect URIs</strong> field and click<strong> Create.</strong></li>
+                            <li>Copy/paste <strong>Client ID</strong> and <strong>Client Secret</strong> into settings page.</li>
+                        </ol>
+                        <p><img src="assets/images/social_login_google_ex1.png"></p>
+                    </section>
+
+                    <section id="mail-outgoing" class="new-section">
+                        <h2>Outgoing Mail</h2>
+
+                        <p>Outgoing mail includes all emails that are sent from your application to the user. Password reset, user confirmation, notifications and more.</p>
+
+                        <p>In order for outgoing mail to work, you will need to configure it in <strong>admin area > settings > mail</strong> page.</p>
+                        <p>Unless you already have one of the other available mail methods set up, we highly recommend using <strong>mailgun</strong>. It's free for up to 10000 emails a month and you will avoid many of the problems associated with traditional SMTP servers.</p>
+
+                        <h3>Mailgun</h3>
+                        <p>Although you are not required to add a credit card for mailgun, it's recommended that you do, because you will be put on a lower priority queue without a credit card, which could result in slower email delivery.</p>
+
+                        <ol>
+                            <li>Register <a target="_blank" href="https://mailgun.com/signup">here</a></li>
+                            <li>In the next page click <strong>Add Your Domain</strong> button, then enter your site url in the <strong>Domain Name</strong> field and click <strong>Add Domain</strong></li>
+                            <li>Verify your domain on mailgun. This will differ depending on your hosting, but you should be able to find a guide in your hosting providers documentation, mailgun documentation or simply via google search. </li>
+                        </ol>
+                        <img src="assets/images/mailgun_ex_1.png">
+                        <img src="assets/images/mailgun_ex_2.png">
+
+                        <h3>SMTP</h3>
+                        <p>If you want to use SMTP, go to <strong>admin area > settings > mail</strong> page and simply enter your smtp server credentials.</p>
+                    </section>
+
+                    <section id="admin-analytics" class="new-section">
+                        <h2>Analytics</h2>
+
+                        <h3>Registering for google analytics account</h3>
+                        <p>Analytics page is powered by google analytics so you will need to register for google analytics and add their supplied code to your site. Here's how to do it.</p>
+
+                        <p><strong>Important!</strong> This will only enable tracking. See below on how to get the analytics page on the site working.</p>
+
+                        <ul>
+                            <li>1. Go to this <a href="https://www.google.com/analytics/web/">url</a>. You will be prompted to login to your google account or create a new one if you don't have it already. Do it.</li>
+                            <li>
+                                2. Click on Admin -> Property -> Create new Property -> fill out required fields -> click on get tracking ID
+                                <img src="assets/images/analytics_ex_1.png">
+                                <img src="assets/images/analytics_ex_2.png">
+                            </li>
+                            <li>
+                                3. Go to <strong>admin -> settings -> analytics</strong> and paste the code into <strong>google analytics tracking code</strong> field (only paste in the code that starts with UA, not the whole script).
+                                <img src="assets/images/analytics_ex_3.png">
+                            </li>
+                        </ul>
+
+                        <h3>Registering for google ID</h3>
+                        <p>To get analytics page on the site working, you will need to enter your google ID in the admin > settings > analytics page. You can use the same ID as for google social login, you can find instructions on how to obtain it, in the social login documentation section.</p>
+
+                        <p>Two additional things you need to do for this ID from google developers console:</p>
+                        <ol>
+                            <li>Enable google analytics API.</li>
+                            <li>Enter your site url into <strong>authorized javascript origins</strong> field.</li>
+                        </ol>
+
+                        <img src="assets/images/analytics_ex_6.png">
+                        <img src="assets/images/analytics_ex_7.png">
+
+                        <h3>Viewing analytics information</h3>
+                        <p>Once you have created analytics account and entered it in settings page, go to admin area -> analytics, click on <strong>Access google analytics button</strong>, then click <strong>accept</strong></p>
+                        <img src="assets/images/analytics_ex_5.png">
+                        <p>And you are done. You can now easily view analytics information right from the admin area. You can also select different analytics account, property and view from the bottom of the page.</p>
+                        <img src="assets/images/analytics_ex_4.png">
+                    </section>
+
+                    <section id="translations">
+                        <h2>Translations</h2>
+
+                        <p>You can translate Architect right from the admin area so there's no need to mess with configuration files or 3rd party applications. Simply open translations page and enter your translation for a particular line under <strong>translation</strong> column in the table.</p>
+
+                        <p>Note that while you can translate the original (englsish) locale, it is recommended to create a new one (frome the panel on the left) so you don't need to worry about overwriting it with future updates.</p>
+
+                        <img src="assets/images/translations_ex_1.png">
+                    </section>
+                   
+                    <section id="support" class="new-section">
+                        <h2>Support</h2>
+                        <p>If you have any issues or questions, you can submit a new ticket on our support site <a href="https://support.vebto.com" target="_blank">here</a>. Thank you!</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

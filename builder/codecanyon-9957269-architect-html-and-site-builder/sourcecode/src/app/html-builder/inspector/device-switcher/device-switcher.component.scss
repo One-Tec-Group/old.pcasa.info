@@ -1,0 +1,31 @@
+@import "../../../../scss/variables";
+
+device-switcher {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  background-color: $site-bg-color-100;
+  @include mat-elevation(8);
+
+  .device-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 155px;
+    background-color: $site-bg-color-200;
+
+    > mat-icon {
+      width: 45px;
+      height: 45px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .mat-tab-label {
+    min-width: 25%;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../../../../scss/variables";
+
+drag-visual-helper {
+  display: block;
+  position: fixed;
+  bottom: -50px;
+  left: -100px;
+  pointer-events: none;
+  background-color: $site-bg-color-100;
+  color: $site-text-color-400;
+  max-height: 40px;
+  border-radius: 2px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: $box-shadow-4;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  z-index: 10;
+}

@@ -1,0 +1,43 @@
+@import "../../../../scss/_variables";
+
+publish-project-modal {
+  display: block;
+
+  .project-url {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $site-border-color-100;
+
+    > a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 500;
+      font-size: 1.5rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    > mat-slide-toggle {
+      margin-left: auto;
+    }
+  }
+
+  .inline-inputs {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+
+    > .input-container {
+      max-width: 200px;
+    }
+
+    > mat-slide-toggle {
+      margin-left: auto;
+    }
+  }
+}

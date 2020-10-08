@@ -1,0 +1,71 @@
+@import "../../../../../scss/variables";
+
+attributes-panel {
+  display: block;
+
+  .visibility-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 15px;
+
+    button {
+      padding: 12px 15px;
+      background-color: darken($site-bg-color-200, 2%);
+      border: 1px solid $site-border-color-200;
+      color: inherit;
+      border-radius: 3px;
+      margin: 0 3px;
+
+      &.active {
+        background-color: $site-bg-color-100;
+      }
+    }
+  }
+
+  .input-container, .mat-chip-list-wrapper {
+    display: flex;
+    align-items: center;
+    color: $site-text-color-400;
+
+    label {
+      flex: 0 0 80px;
+      width: 80px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+      text-align: left;
+    }
+
+    input, select {
+      flex: 1 1 auto;
+      max-width: 168px;
+      font-size: 1.3rem;
+      height: 38px;
+      padding: 8px;
+    }
+  }
+
+  .mat-chip-list-wrapper {
+    margin: 0;
+    width: 100%;
+
+    input.mat-input-element {
+      margin: 0;
+    }
+
+    > .mat-chip {
+      margin-top: 7px !important;
+      color: inherit;
+      padding: 4px 12px;
+
+      &:last-of-type {
+        margin-bottom: 5px;
+      }
+
+      > .mat-chip-remove {
+        color: inherit;
+      }
+    }
+  }
+}
